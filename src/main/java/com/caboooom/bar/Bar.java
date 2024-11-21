@@ -87,6 +87,13 @@ public class Bar implements Bounded, Paintable, Moveable {
     @Override
     public void move() {
         x += dx;
+
+        // 화면 경계 체크 (가정: 화면 너비 800)
+        if (getMinX() < 0) {
+            x = width / 2; // 왼쪽 경계
+        } else if (getMaxX() > 800) {
+            x = 800 - width / 2; // 오른쪽 경계
+        }
     }
 
     @Override
